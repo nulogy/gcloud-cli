@@ -5,10 +5,10 @@ module Gcloud::Cli
     let(:url) { 'a-url' }
     let(:api_key) { 'a-key' }
 
-    it "saves and post request" do
+    it "saves config" do
+      allow(ConfigRepository).to receive(:load).and_return(nil)
       allow(ConfigRepository).to receive(:ask).and_return(url, api_key)
       allow(ConfigRepository).to receive(:puts)
-      allow(ConfigRepository).to receive(:load).and_return(nil)
 
       expect(ConfigRepository).to receive(:save) do |config|
         expect(config.url).to eq(url)

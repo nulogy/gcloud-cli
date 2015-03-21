@@ -5,7 +5,7 @@ module Gcloud::Cli
     let(:url) { 'a-url' }
     let(:api_key) { 'a-key' }
 
-    it "loads config and post request" do
+    it "loads config and posts request" do
       allow(ConfigRepository).to receive(:load).and_return(Config.new(url, api_key))
 
       expect(RestClient).to receive(:post).with(url, api_key: api_key)

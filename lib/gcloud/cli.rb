@@ -1,19 +1,14 @@
-require "gcloud/cli/version"
-
-require "rest_client"
+require 'rest_client'
+require 'gcloud/cli/version'
+require 'gcloud/cli/config_repository'
 
 module Gcloud
   module Cli
-    def self.create_gorgon_cluster
-      url = 'http://localhost:3000/clusters'
+    module_function
 
-      # MY_NOTE: get API Key from a file
-      api_key = 'bcba4ac2fc35257d75adc6c1140dac019c0c34e0f423f78c0a50'
-
-      result = RestClient.post(url, api_key: api_key)
-
-      puts "############ result ##########"
-      p result
+    def create_gorgon_cluster
+      config = ConfigRepository.find_or_create
+      RestClient.post(config.url, api_key: config.api_key)
     end
   end
 end
