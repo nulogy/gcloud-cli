@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Gcloud::Cli::VERSION
   spec.authors       = ["Arturo Pie"]
   spec.email         = ["arturop@nulogy.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{GCloud client.}
+  spec.description   = %q{This llibrary is used to communicate and authenticate with GCloud service.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
