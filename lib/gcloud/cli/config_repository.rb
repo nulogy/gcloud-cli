@@ -1,13 +1,13 @@
 require 'yaml'
 require 'highline/import'
+require 'gcloud/cli/config'
 
 module Gcloud::Cli
-  Config = Struct.new(:url, :api_key)
   module ConfigRepository
     extend self
 
     # MY_NOTE: change this when we get gcloud url
-    DEFAULT_URL = 'http://localhost:3000/clusters'
+    DEFAULT_URL = 'http://localhost:3000'
     CONFIG_FILE = ENV['HOME'] + '/.gcloud'
 
     def find_or_create

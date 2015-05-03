@@ -8,7 +8,12 @@ module Gcloud
 
     def create_gorgon_cluster
       config = ConfigRepository.find_or_create
-      RestClient.post(config.url, api_key: config.api_key)
+      RestClient.post(config.create_cluster_url, api_key: config.api_key)
+    end
+
+    def release_gorgon_cluster(cluster_id)
+      config = ConfigRepository.find_or_create
+      RestClient.post(config.release_cluster_url(cluster_id), api_key: config.api_key)
     end
   end
 end
