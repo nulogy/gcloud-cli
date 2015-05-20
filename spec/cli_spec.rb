@@ -7,11 +7,13 @@ module Gcloud::Cli
 
     it "loads config and posts request" do
       allow(ConfigRepository).to receive(:load).and_return(Config.new(url, api_key))
+      expect(RestClient).to receive(:post).
+          with("#{url}/clusters", api_key: api_key, grid_configuration_name: 'that_grid').
+          and_return(JSON[cluster_id: 'a-cluster-id'])
 
-      expect(RestClient).to receive(:post).with("#{url}/clusters", api_key: api_key).
-            and_return(JSON[cluster_id: 'a-cluster-id'])
+      result = Gcloud::Cli.create_gorgon_cluster('that_grid')
 
-      expect(Gcloud::Cli.create_gorgon_cluster).to eq({cluster_id: 'a-cluster-id'})
+      expect(result).to eq({cluster_id: 'a-cluster-id'})
     end
 
     it "posts relases cluster request" do
