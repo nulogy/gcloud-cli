@@ -6,7 +6,7 @@ module Gcloud::Cli
   module ConfigRepository
     extend self
 
-    DEFAULT_URL = 'https://gcloud-nulogy.herokuapp.com/'
+    DEFAULT_URL = ''
     CONFIG_FILE = ENV['HOME'] + '/.gcloud'
 
     def find_or_create
